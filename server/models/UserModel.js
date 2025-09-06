@@ -6,11 +6,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Email is required!"],
       unique: true,
+      index: true,
     },
     phone: {
-      type: Number,
+      type: String,
       required: [true, "Phone number is required!"],
       unique: true,
+      min: 10,
+      max: 10,
     },
     fullName: {
       type: String,
@@ -26,6 +29,10 @@ const userSchema = new mongoose.Schema(
         default: null,
       },
       city: {
+        type: String,
+        default: null,
+      },
+      place: {
         type: String,
         default: null,
       },
@@ -59,6 +66,8 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+userSchema.index({ email: 1, phone: 1 });
 
 const UserModel = mongoose.models.users || mongoose.model("users", userSchema);
 export default UserModel;

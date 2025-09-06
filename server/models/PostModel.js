@@ -7,6 +7,19 @@ const postSchema = new mongoose.Schema(
       ref: "users",
       required: [true, "User ID is required!"],
     },
+    title: {
+      type: String,
+      required: [true, "Post title is required!"],
+      min: 5,
+      max: 50,
+    },
+    phone: {
+      type: Number,
+      required: [true, "Phone numberis required!"],
+      min: 10,
+      max: 10,
+      unique: false,
+    },
     bloodType: {
       type: String,
       enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
@@ -31,6 +44,10 @@ const postSchema = new mongoose.Schema(
         default: null,
       },
       city: {
+        type: String,
+        default: null,
+      },
+      place: {
         type: String,
         default: null,
       },

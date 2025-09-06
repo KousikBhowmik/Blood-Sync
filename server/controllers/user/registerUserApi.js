@@ -4,14 +4,11 @@ const registerUserApi = async (req, res) => {
   try {
     const { email, phone, fullName, address, bloodType } = req.body;
 
-    // ✅ Basic validation
     if (!email || !phone || !bloodType) {
       return res
         .status(400)
         .json({ message: "Email, phone, and blood type are required" });
     }
-
-    // ✅ Check if user already exists
     const existingUser = await UserModel.findOne({
       $or: [{ email }, { phone }],
     });
@@ -20,8 +17,6 @@ const registerUserApi = async (req, res) => {
         .status(409)
         .json({ message: "User with this email or phone already exists" });
     }
-
-    // ✅ Create and save new user
     const newUser = new UserModel({
       email,
       phone,
@@ -39,7 +34,8 @@ const registerUserApi = async (req, res) => {
         phone: newUser.phone,
         fullName: newUser.fullName,
         bloodType: newUser.bloodType,
-      }, // don’t return sensitive info
+        address: newUser.address,
+      },
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

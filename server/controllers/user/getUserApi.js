@@ -1,17 +1,17 @@
-import UserModel from "../../models/UserModel";
+import UserModel from "../../models/UserModel.js";
 
 const getUserApi = async (req, res) => {
-  const { userId } = req.query;
+  const { email } = req.query;
 
-  if (!userId) {
-    console.log(`Invalid request: User ID is requered!`);
+  if (!email) {
+    console.log(`Invalid request: Email ID is requered!`);
     return res
       .status(401)
-      .json({ success: false, message: "User ID is required!" });
+      .json({ success: false, message: "Email ID is required!" });
   }
 
   try {
-    const user = await UserModel.findById(userId).select("-posts, -requests");
+    const user = await UserModel.findOne({ email }).select("-posts, -requests");
 
     if (!user)
       return res
@@ -21,7 +21,14 @@ const getUserApi = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Got the user data!",
-      user,
+      user: {
+        id: user._id,
+        email: user.email,
+        phone: user.phone,
+        fullName: user.fullName,
+        bloodType: user.bloodType,
+        address: user.address,
+      },
     });
   } catch (error) {
     console.error(`ERROR: ${error.message}`);
