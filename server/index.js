@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { PORT } from "./utils/constant.js";
 import connectDB from "./configs/connectDB.js";
+import userRouter from "./routes/userRoute.js";
+import postRouter from "./routes/postRoute.js";
 
 dotenv.config();
 
@@ -16,9 +18,9 @@ connectDB();
 app.get("/", (_, res) => {
   res.send("Hello from boold sync server!");
 });
-// auth route
-// user route
-// posts route 
+app.use("/user", userRouter);
+app.use("/post", postRouter);
+
 
 app.listen(PORT || "4001", () => {
   console.log(`Server is running on 4000 PORT`);
