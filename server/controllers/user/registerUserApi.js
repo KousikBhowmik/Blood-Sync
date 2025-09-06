@@ -36,6 +36,7 @@ const registerUserApi = async (req, res) => {
         bloodType: newUser.bloodType,
         address: newUser.address,
       },
+      success: true,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
