@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { PORT } from "./utils/constant.js";
+import { API_VERSION } from "./utils/constant.js";
 import connectDB from "./configs/connectDB.js";
 import userRouter from "./routes/userRoute.js";
 import postRouter from "./routes/postRoute.js";
@@ -19,8 +19,8 @@ app.get("/", (_, res) => {
   res.send("Hello from boold sync server!");
 });
 
-// -------------- api V1 routes ------------- 
-app.use("/api/v1/user", userRouter);
-app.use("/api/v1/post", postRouter);
+// -------------- api V1 routes -------------
+app.use(`${API_VERSION}/user`, userRouter);
+app.use(`${API_VERSION}/post`, postRouter);
 
 export default app;
