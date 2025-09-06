@@ -18,10 +18,9 @@ connectDB();
 app.get("/", (_, res) => {
   res.send("Hello from boold sync server!");
 });
-app.use("/user", userRouter);
-app.use("/post", postRouter);
 
+// -------------- api V1 routes ------------- 
+app.use("api/v1/user", userRouter);
+app.use("api/v1/post", postRouter);
 
-app.listen(PORT || "4001", () => {
-  console.log(`Server is running on 4000 PORT`);
-});
+export default app;
