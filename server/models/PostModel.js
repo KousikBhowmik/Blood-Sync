@@ -22,7 +22,7 @@ const postSchema = new mongoose.Schema(
       max: 600,
     },
     address: {
-      stateName: {
+      state: {
         type: String,
         default: null,
       },
@@ -39,6 +39,10 @@ const postSchema = new mongoose.Schema(
         default: null,
       },
     },
+    tags: {
+      type: [String],
+      default: [],
+    },
     date: {
       type: Date,
       default: Date.now,
@@ -51,7 +55,7 @@ const postSchema = new mongoose.Schema(
     ],
     state: {
       type: String,
-      enum: ["Active", "Expired", "Fulfilled"],
+      enum: ["Active", "Expired", "Fulfilled", "Deleted"],
       default: "Active",
     },
   },

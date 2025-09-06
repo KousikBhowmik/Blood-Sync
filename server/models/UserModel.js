@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
     address: {
-      stateName: {
+      state: {
         type: String,
         default: null,
       },

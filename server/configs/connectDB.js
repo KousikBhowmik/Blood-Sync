@@ -6,9 +6,9 @@ const connectDB = async () => {
     mongoose.connection.on("connected", () => {
       console.log(`DB connected`);
     });
-    await mongoose.connect(`${MONGODB_URI}/blood-sync`);
+    await mongoose.connect(`${MONGODB_URI}/bloodSync`);
   } catch {
-    console.log("DB connection Failed :(");
+    console.log("DB connection Failed!");
   }
 };
 
