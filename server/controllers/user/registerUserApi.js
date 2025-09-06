@@ -9,9 +9,7 @@ const registerUserApi = async (req, res) => {
         .status(400)
         .json({ message: "Email, phone, and blood type are required" });
     }
-    const existingUser = await UserModel.findOne({
-      $or: [{ email }, { phone }],
-    });
+    const existingUser = await UserModel.findOne({ email });
     if (existingUser) {
       return res
         .status(409)
@@ -27,6 +25,7 @@ const registerUserApi = async (req, res) => {
     await newUser.save();
 
     res.status(201).json({
+      success: true,
       message: "User registered successfully",
       user: {
         id: newUser._id,
@@ -36,7 +35,6 @@ const registerUserApi = async (req, res) => {
         bloodType: newUser.bloodType,
         address: newUser.address,
       },
-      success: true,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
