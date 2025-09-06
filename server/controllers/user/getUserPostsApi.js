@@ -1,3 +1,4 @@
-const getUserPostsApi = async (req, res) => {};
+const getUserPostsApi = async (req, res) => {
+};
 
 export default getUserPostsApi;
