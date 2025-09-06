@@ -20,7 +20,7 @@ app.get("/", (_, res) => {
 });
 
 // -------------- api V1 routes ------------- 
-app.use("api/v1/user", userRouter);
-app.use("api/v1/post", postRouter);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/post", postRouter);
 
 export default app;
