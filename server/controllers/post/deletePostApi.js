@@ -22,7 +22,7 @@ const deletePost = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Post deleted successfully!", post: deletedPost });
+      .json({ message: "Post deleted successfully!", success: true });
   } catch (error) {
     res
       .status(500)
