@@ -47,10 +47,6 @@ const postSchema = new mongoose.Schema(
         type: String,
         default: null,
       },
-      place: {
-        type: String,
-        default: null,
-      },
       pin: {
         type: Number,
         default: null,

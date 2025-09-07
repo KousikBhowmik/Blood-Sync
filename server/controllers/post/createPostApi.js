@@ -11,7 +11,7 @@ const createPostApi = async (req, res) => {
       .json({ success: false, message: "All fields are requerd!" });
   }
   try {
-    const tages = Object.values(address).map((val, _) => val);
+    const tagArray = Object.values(address).map((val, _) => val);
 
     const postObj = await PostModel.create({
       userId,
@@ -19,7 +19,7 @@ const createPostApi = async (req, res) => {
       quantity,
       text,
       address,
-      tages,
+      tags: tagArray,
     });
 
     if (!postObj) {
@@ -34,7 +34,7 @@ const createPostApi = async (req, res) => {
       { $push: { posts: postObj._id } },
       { new: true }
     );
-    
+
     res.status(200).json({
       success: true,
       message: "Post created successfuly!",
