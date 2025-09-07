@@ -11,7 +11,6 @@ body: {
     "state": "Tamil Nadu", 
     "district": "Chennai",
     "city": "Chennai",
-    "place": "T. Nagar",
     "pin": 600017
   },
   "bloodType": "A-" 
