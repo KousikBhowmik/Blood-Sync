@@ -8,7 +8,7 @@ const postRouter = Router();
 
 postRouter.post('/create', createPostApi);
 postRouter.get("/get-posts", getPostesApi);
-postRouter.put("/donate-request", donationRequestApi);
 postRouter.delete("/delete", deletePost);
+postRouter.put("/donate-request", donationRequestApi);
 
 export default postRouter;

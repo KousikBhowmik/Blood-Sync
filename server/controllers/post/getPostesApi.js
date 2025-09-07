@@ -1,9 +1,7 @@
 import PostModel from "../../models/PostModel.js";
 
 const getPostesApi = async (req, res) => {
-  const { tags, state } = req.body;
-
-  const queryTags = Object.values(tags).map((val, _) => val);
+  const { state, queryTags } = req.body;
 
   if (queryTags.length == 0 || !state) {
     console.log(`Invalid request: Query tags and stae is requered!`);
