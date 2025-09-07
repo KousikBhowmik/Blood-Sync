@@ -2,7 +2,7 @@ import PostModel from "../../models/PostModel.js";
 import UserModel from "../../models/UserModel.js";
 
 const createPostApi = async (req, res) => {
-  const { userId, bloodType, quantity, text, address } = req.body;
+  const { userId, title, bloodType, quantity, phone, text, address } = req.body;
 
   if (!userId || !bloodType || !quantity || text || !address) {
     console.log(`Invalid Request!`);
@@ -15,7 +15,9 @@ const createPostApi = async (req, res) => {
 
     const postObj = await PostModel.create({
       userId,
+      title,
       bloodType,
+      phone,
       quantity,
       text,
       address,
