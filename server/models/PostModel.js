@@ -14,7 +14,7 @@ const postSchema = new mongoose.Schema(
       max: 50,
     },
     phone: {
-      type: Number,
+      type: String,
       required: [true, "Phone numberis required!"],
       min: 10,
       max: 10,

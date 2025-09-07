@@ -4,12 +4,13 @@ import UserModel from "../../models/UserModel.js";
 const createPostApi = async (req, res) => {
   const { userId, title, bloodType, quantity, phone, text, address } = req.body;
 
-  if (!userId || !bloodType || !quantity || text || !address) {
-    console.log(`Invalid Request!`);
+  if (!userId || !title || !bloodType || !quantity || !text || !address) {
+    console.log("Invalid Request!");
     return res
-      .status(401)
-      .json({ success: false, message: "All fields are requerd!" });
+      .status(400)
+      .json({ success: false, message: "All fields are required!" });
   }
+
   try {
     const tagArray = Object.values(address).map((val, _) => val);
 
