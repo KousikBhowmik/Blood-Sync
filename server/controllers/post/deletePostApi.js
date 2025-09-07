@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 const deletePost = async (req, res) => {
   try {
-    const { postId } = req.query; // or req.params depending on route setup
+    const { postId } = req.query; 
     console.log("Received postId:", postId);
 
     if (!postId || !mongoose.Types.ObjectId.isValid(postId)) {
